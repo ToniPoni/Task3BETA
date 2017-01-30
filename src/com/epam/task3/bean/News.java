@@ -59,4 +59,13 @@ public class News implements Serializable{
         result = 31 * result + (creator != null ? creator.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "News{" +
+                "name='" + name + '\'' +
+                ", category='" + category + '\'' +
+                ", creator='" + creator + '\'' +
+                '}';
+    }
 }
