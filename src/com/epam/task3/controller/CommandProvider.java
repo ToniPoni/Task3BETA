@@ -9,6 +9,7 @@ public class CommandProvider {
 
     CommandProvider() {
         repository.put(CommandName.ADD_NEWS, new AddNews());
+        repository.put(CommandName.GET_NEWS, new GetNews());
     }
 
     Command getCommand(String name) {
