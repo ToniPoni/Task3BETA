@@ -3,13 +3,14 @@ package com.epam.task3.dao;
 
 import com.epam.task3.bean.News;
 
+import java.util.HashSet;
 import java.util.List;
 
-public interface NewsDao {
+public interface NewsDAO {
     void addNews(News news);
-    List<News> getNews(String title);
-    List<News> getNews(String category, String title);
-    List<News> getNews(String category, String title, String creator);
+    HashSet<News> getNews(String tag);
+    HashSet<News> getNews(String tag1,String tag2);
+    News getNews(News news);
 
 
 }

@@ -2,7 +2,7 @@ package com.epam.task3.bean;
 
 import java.io.Serializable;
 
-public class News implements Serializable{
+public class News implements Serializable {
     private String name = null;
     private String category = null;
     private String creator = null;
@@ -10,9 +10,9 @@ public class News implements Serializable{
     public News() {
     }
 
-    public News(String name, String category, String creator) {
-        this.name = name;
+    public News(String category, String name, String creator) {
         this.category = category;
+        this.name = name;
         this.creator = creator;
     }
 
