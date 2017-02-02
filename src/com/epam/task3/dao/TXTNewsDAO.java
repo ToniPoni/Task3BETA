@@ -1,6 +1,7 @@
 package com.epam.task3.dao;
 
 import com.epam.task3.bean.News;
+import com.epam.task3.dao.exception.DAOException;
 import com.epam.task3.data_source.DataStore;
 
 import java.util.ArrayList;
@@ -9,8 +10,8 @@ import java.util.List;
 
 public class TXTNewsDAO implements NewsDAO {
     @Override
-    public void addNews(News news) {
-        DataStore.getInstance().addNews(news);
+    public void addNews(News news)  {
+            DataStore.getInstance().addNews(news);
     }
 
     @Override
