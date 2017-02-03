@@ -51,11 +51,13 @@ public class TXTFileWorkerDAO implements FileWorkable {
         try {
             FileWriter writer = new FileWriter(pathToNewsDataFile, true);
             BufferedWriter bufferWriter = new BufferedWriter(writer);
-            bufferWriter.write(request);
+            //bufferWriter.newLine();
+            bufferWriter.write("\n" + request);
             bufferWriter.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+
     }
 
     private String removePunct(String str) {
