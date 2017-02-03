@@ -2,6 +2,7 @@ package com.epam.task3.controller.commands;
 
 
 import com.epam.task3.bean.News;
+import com.epam.task3.controller.Help;
 import com.epam.task3.controller.commands.Command;
 import com.epam.task3.service.NewsService;
 import com.epam.task3.service.ServiceFactory;
@@ -15,19 +16,15 @@ public class AddNews implements Command {
 
         String response = null;
 
-        String [] tags = request.split(",");
-
-        category = tags[1];
-        name = tags[2];
-        creator = tags[3];
-
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         NewsService newsService = serviceFactory.getNewsService();
 
         try {
-            newsService.addNews(new News(category, name, creator));
+            newsService.addNews(request);
         } catch (Exception e) {
             System.out.println("Wrong input");
+            System.out.println(Help.getWrongInput());
+            e.printStackTrace();
         }
 
 

@@ -6,26 +6,22 @@ import com.epam.task3.service.NewsService;
 import com.epam.task3.service.ServiceFactory;
 import com.epam.task3.service.exception.ServiceException;
 
+import java.io.IOException;
+
 
 public class GetNews implements Command {
     @Override
-    public String execute(String request)  {
-
-        String[] tags = request.split(",");
-
+    public String execute(String request) throws IOException, ServiceException {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         NewsService newsService = serviceFactory.getNewsService();
 
 
-        if (tags.length - 1 == 1) {
-            for (News news : newsService.getNews(tags[1])) {
-                System.out.println(news);
-            }
-        } else if (tags.length - 1 == 2) {
-            for (News news : newsService.getNews(tags[1], tags[2])) {
-                System.out.println(news);
-            }
+
+        for(News news : newsService.getNews(request)) {
+            //System.out.println("Hello");
+            System.out.println(news);
         }
+
         System.out.println(request.length());
 
 

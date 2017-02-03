@@ -9,10 +9,10 @@ import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
 
-public class TXTParser implements Parsable {
+public class TXTParserDAO implements Parsable {
 
     @Override
-    public HashSet<News> parseFile(String wayToFile) throws Exception {
+    public HashSet<News> parseFile (String wayToFile) throws Exception {
         HashSet<News> news = new HashSet<>();
 
             List<String> lines = Files.readAllLines(Paths.get(wayToFile));
@@ -29,10 +29,6 @@ public class TXTParser implements Parsable {
         return news;
     }
 
-//    private String [] lineSplit(String line, String delimeter) throws DAOException {
-//        if(line.length() != 3) {
-//            throw new DAOException("Invalid reading from file");
-//        }
-//        return line.split(delimeter);
-//    }
+
+
 }
