@@ -1,5 +1,7 @@
 package com.epam.task3.controller.commands;
 
+import com.epam.task3.controller.Help;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +23,8 @@ public class CommandProvider {
         try {
             commandName = CommandName.valueOf(name.toUpperCase());
             command = repository.get(commandName);
-        } catch (IllegalArgumentException | NullPointerException e) {    //write log
+        } catch (IllegalArgumentException | NullPointerException e) {
+             System.out.println(Help.getWrongInput());
              command = repository.get(CommandName.WRONG_REQUEST);
              }
              return command;

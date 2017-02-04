@@ -5,7 +5,8 @@ public class DAOFactory {
     private static final DAOFactory instance = new DAOFactory();
 
     private final TXTNewsDAO txtNewsDAO = new TXTNewsDAO();
-    private final TXTParser txtParser = new TXTParser();
+    private final TXTParserDAO txtParser = new TXTParserDAO();
+    private final TXTFileWorkerDAO txtFileWorkerDAO = new TXTFileWorkerDAO();
 
     private DAOFactory(){}
 
@@ -13,10 +14,13 @@ public class DAOFactory {
         return instance;
     }
 
+    public TXTFileWorkerDAO getTxtFileWorkerDAO() {
+        return txtFileWorkerDAO;
+    }
     public TXTNewsDAO getTxtNewsDAO() {
         return txtNewsDAO;
     }
-    public TXTParser getTxtParser() {
+    public TXTParserDAO getTxtParser() {
         return txtParser;
     }
 }
