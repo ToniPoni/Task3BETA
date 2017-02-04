@@ -11,7 +11,5 @@ public interface NewsDAO {
     void addNews(News news) ;
     HashSet<News> getNews(String tag) ;
     HashSet<News> getNews(String tag1,String tag2)  ;
-    News getNews(News news)  ;
-
 
 }
