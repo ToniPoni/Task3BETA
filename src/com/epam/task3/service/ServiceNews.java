@@ -11,8 +11,4 @@ public interface ServiceNews {
 
     public HashSet<News> getNews(String tag) throws IOException, ServiceException;
 
-    public HashSet<News> getNews(String tag1, String tag2) ;
-
-    public HashSet<News> getNews(News news) ;
-
 }

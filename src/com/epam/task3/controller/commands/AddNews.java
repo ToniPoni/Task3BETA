@@ -10,23 +10,21 @@ import com.epam.task3.service.ServiceFactory;
 public class AddNews implements Command {
     @Override
     public String execute(String request) {
-        String category = null;
-        String name = null;
-        String creator = null;
-
         String response = null;
 
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         NewsService newsService = serviceFactory.getNewsService();
 
-        try {
-            newsService.addNews(request);
-        } catch (Exception e) {
-            System.out.println("Wrong input");
-            System.out.println(Help.getWrongInput());
-            e.printStackTrace();
-        }
+//        try {
+//            newsService.addNews(request);
+//        } catch (Exception e) {
+//            System.out.println("Wrong input");
+//            System.out.println(Help.getWrongInput());
+//            e.printStackTrace();
+//        }
 
+        newsService.addNews(request);
+        response = "News has been added successful.";
 
         return response;
     }

@@ -14,9 +14,7 @@ import java.util.HashSet;
 public class NewsService implements ServiceNews {
 
     private DAOFactory daoFactory = DAOFactory.getInstance();
-    private TXTNewsDAO txtNewsDAO = daoFactory.getTxtNewsDAO();
     private TXTFileWorkerDAO txtFileWorkerDAO = daoFactory.getTxtFileWorkerDAO();
-
 
     @Override
     public void addNews(String request) {
@@ -24,21 +22,12 @@ public class NewsService implements ServiceNews {
     }
 
     @Override
-    public HashSet<News> getNews(String criteria) throws IOException, ServiceException {
+    public HashSet<News> getNews(String request) throws ServiceException {
         try {
-            return txtFileWorkerDAO.searchNewsInFIle(criteria);
-        } catch (DAOException e) {
-            throw new ServiceException(e);
+            return txtFileWorkerDAO.searchNewsInFIle(request);
+        } catch ( DAOException e) {
+            throw new ServiceException(e.getMessage());
         }
     }
 
-    @Override
-    public HashSet<News> getNews(String tag1, String tag2)  {
-        return txtNewsDAO.getNews(tag1, tag2);
-    }
-
-    @Override
-    public HashSet<News> getNews(News news)  {
-        return null;
-    }
 }

@@ -24,21 +24,25 @@ public class Controller {
 
 
     public String executeTask(String request) throws IOException, ControllerException, ServiceException {
+        try {
+            String commandName;
+            Command executionCommand;
+            commandName = request.substring(0, request.indexOf(paramDelimeter));
+            executionCommand = provider.getCommand(commandName);
+            String response;
+            request = request.replace(commandName, "");
+            request = request.replace(paramDelimeter, "");
+            response = executionCommand.execute(request);
 
-        String commandName;
-        Command executionCommand;
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            return response;
+        }catch (ServiceException e1) {
+            System.out.println(e1.getMessage());
+        }
+        catch(StringIndexOutOfBoundsException e2) {
+            System.out.println(Help.getWrongInput());
+        }
 
-        //проблема в том что нужно как то погасить Exception возникающий здесь.
-        commandName = request.substring(0, request.indexOf(paramDelimeter));
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        executionCommand = provider.getCommand(commandName);
-        String response;
-        request = request.replace(commandName, "");
-        request = request.replace(paramDelimeter, "");
-        response = executionCommand.execute(request);
-
-        return response;
+        return "";
     }
 
     public String takeCommand(String request) {
