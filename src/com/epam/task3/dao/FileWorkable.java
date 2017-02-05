@@ -8,6 +8,6 @@ import java.io.IOException;
 import java.util.HashSet;
 
 public interface FileWorkable {
-    HashSet<News> searchNewsInFIle(String request) throws IOException, DAOException;
-    void addItem(String request);
+    HashSet<News> searchNewsInFIle(String request) throws  DAOException;
+    void addItem(String request) throws DAOException;
 }

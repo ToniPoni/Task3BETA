@@ -11,18 +11,17 @@ import java.io.IOException;
 
 public class GetNews implements Command {
     @Override
-    public String execute(String request) throws IOException, ServiceException {
+    public String execute(String request) throws ServiceException {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         NewsService newsService = serviceFactory.getNewsService();
 
-
-
-        for(News news : newsService.getNews(request)) {
-            //System.out.println("Hello");
-            System.out.println(news);
+        if(newsService.getNews(request).isEmpty()) {
+            System.out.println("News not found, please check your criteria.");
+        } else {
+            for(News news : newsService.getNews(request)) {
+                System.out.println(news);
+            }
         }
-
-        System.out.println(request.length());
 
 
         return null;

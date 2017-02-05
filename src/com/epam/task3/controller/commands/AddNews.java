@@ -3,9 +3,12 @@ package com.epam.task3.controller.commands;
 
 import com.epam.task3.bean.News;
 import com.epam.task3.controller.Help;
+import com.epam.task3.controller.NewsValidator;
 import com.epam.task3.controller.commands.Command;
 import com.epam.task3.service.NewsService;
 import com.epam.task3.service.ServiceFactory;
+import com.epam.task3.service.exception.ServiceException;
+import com.sun.corba.se.spi.activation.ServerAlreadyActive;
 
 public class AddNews implements Command {
     @Override
@@ -15,15 +18,18 @@ public class AddNews implements Command {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         NewsService newsService = serviceFactory.getNewsService();
 
-//        try {
-//            newsService.addNews(request);
-//        } catch (Exception e) {
-//            System.out.println("Wrong input");
-//            System.out.println(Help.getWrongInput());
-//            e.printStackTrace();
-//        }
+        if(NewsValidator.newsValidate(request)) {
+            try{
+                newsService.addNews(request);
+            } catch (ServiceException e) {
+                System.out.println(e.getMessage());
+            }
+        } else {
+            System.out.println(Help.getWrongInput());
+        }
 
-        newsService.addNews(request);
+
+
         response = "News has been added successful.";
 
         return response;

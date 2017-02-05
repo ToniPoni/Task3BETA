@@ -23,8 +23,9 @@ public class Controller {
     private final String paramDelimeter = "-";
 
 
-    public String executeTask(String request) throws IOException, ControllerException, ServiceException {
+    public String executeTask(String request) throws ControllerException {
         try {
+
             String commandName;
             Command executionCommand;
             commandName = request.substring(0, request.indexOf(paramDelimeter));
@@ -38,15 +39,11 @@ public class Controller {
         }catch (ServiceException e1) {
             System.out.println(e1.getMessage());
         }
-        catch(StringIndexOutOfBoundsException e2) {
+        catch(IOException | StringIndexOutOfBoundsException e2) {
             System.out.println(Help.getWrongInput());
         }
 
         return "";
     }
 
-    public String takeCommand(String request) {
-        String commandName = request.substring(0, request.indexOf(paramDelimeter));
-        return commandName;
-    }
 }
